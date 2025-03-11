@@ -21,6 +21,5 @@ def is_existing_target_number_binary(target, array):
 
     return False
 
-
 result = is_existing_target_number_binary(finding_target, finding_numbers)
 print(result)
