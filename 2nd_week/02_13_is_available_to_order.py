@@ -10,7 +10,6 @@ shop_orders = ["오뎅", "콜라", "만두"]
 
 
 def binary_search(arr, target):
-    """이진 탐색 함수: arr에서 target이 있으면 True, 없으면 False 반환"""
     left, right = 0, len(arr) - 1
 
     while left <= right:
@@ -24,15 +23,22 @@ def binary_search(arr, target):
 
     return False  # 못 찾았을 경우 False
 
+# 시간복잡도는 (M + N) * logN
+# def is_available_to_order(menus, orders):
+#     menus.sort()
+#
+#     for order in orders:
+#         if not binary_search(menus, order):
+#             return False
+#     else:
+#         return True
 
 def is_available_to_order(menus, orders):
-    menus.sort()  # 이진 탐색을 위해 정렬
-
-    for order in orders:
-        if not binary_search(menus, order):  # 하나라도 찾지 못하면 False 반환
+    menus_set = set(menus) # 시간 복잡도 N
+    for order in orders: # 시간 복잡도 M
+        if order not in menus_set: # 시간 복잡도 1
             return False
-    else:
-        return True  # 모든 주문이 존재하면 True 반환
+    return True
 
 result = is_available_to_order(shop_menus, shop_orders)
 print(result)
