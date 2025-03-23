@@ -8,9 +8,44 @@
 # "(())()" # True
 # "(((("   # False
 
+# 예시를 차분하게 순차 탐색해보면서 알고리즘을 파악해보자
+
+# def is_correct_parenthesis(string):
+#     # 구현해보세요!
+#     stack = []
+#     for char in string:
+#         if not stack and char == ")":
+#             return False
+#         elif char == "(":
+#             stack.append(char)
+#             continue
+#
+#         if stack[-1] == '(' and char == ')':
+#             stack.pop()
+#         else:
+#             stack.append(char)
+#
+#     if stack:
+#         return False
+#     return True
+
+
 def is_correct_parenthesis(string):
-    # 구현해보세요!
-    return
+    stack = []
+
+    for i in range(len(string)):
+        if string[i] == "(":
+            stack.append("(")  # 여기 아무런 값이 들어가도 상관없습니다! ( 가 들어가있는지 여부만 저장해둔 거니까요
+        elif string[i] == ")":
+            if len(stack) == 0:
+                return False
+            stack.pop()
+
+    if len(stack) != 0:
+        return False
+    else:
+        return True
+
 
 
 print("정답 = True / 현재 풀이 값 = ", is_correct_parenthesis("(())"))
